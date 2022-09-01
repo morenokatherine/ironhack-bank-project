@@ -1,4 +1,4 @@
-package com.bank.services;
+package com.bank.services.user;
 
 import com.bank.repositories.AccountHolderRepository;
 import com.bank.repositories.AdminRepository;
