@@ -18,4 +18,6 @@ public class Admin extends User {
     public Admin(String name, List<Account> account) {
         super(name, account);
     }
-}
+    public Admin(String name){};
+    }
+

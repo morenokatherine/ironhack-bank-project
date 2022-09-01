@@ -23,7 +23,7 @@ public class CreditCard extends Account {
 
     public CreditCard(BigDecimal balance, int penaltyFree, LocalDate date, Status status, User primaryOwner, BigDecimal interestRate, BigDecimal creditLimit) {
         super(balance, penaltyFree, date, status, primaryOwner);
-        this.interestRate = interestRate;
-        this.creditLimit = creditLimit;
+        this.creditLimit = creditLimit != null ? creditLimit : BigDecimal.valueOf(100);
+        this.interestRate = interestRate != null ? interestRate : BigDecimal.valueOf(0.2);
     }
 }

@@ -1,6 +1,6 @@
 package com.bank.models.user;
 
-import com.bank.models.Address;
+import com.bank.models.utils.Address;
 import com.bank.models.account.Account;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,13 +19,13 @@ import java.util.List;
 @EqualsAndHashCode
 public class AccountHolder extends User {
     @Embedded
-    private Address primaryAddress;
+    private Address address;
     private String password;
     private LocalDate birthday;
 
     public AccountHolder(String name, List<Account> account, Address primaryAddress, String password, LocalDate birthday) {
         super(name, account);
-        this.primaryAddress = primaryAddress;
+        this.address = primaryAddress;
         this.password = password;
         this.birthday = birthday;
     }

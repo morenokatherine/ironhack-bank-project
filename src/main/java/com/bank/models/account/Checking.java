@@ -10,7 +10,6 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -18,14 +17,13 @@ import java.util.Objects;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Checking extends Account {
-    private LocalDate monthlyMaintenanceFee;
-    private BigDecimal minimumBalance;
+    private final BigDecimal monthlyMaintenanceFee = BigDecimal.valueOf(12);
+
+    private final BigDecimal minimumBalance = BigDecimal.valueOf(250);
     private String secretKey;
 
-    public Checking(BigDecimal balance, int penaltyFree, LocalDate date, Status status, User primaryOwner, LocalDate monthlyMaintenanceFee, BigDecimal minimumBalance, String secretKey) {
+    public Checking(BigDecimal balance, int penaltyFree, LocalDate date, Status status, User primaryOwner, String secretKey) {
         super(balance, penaltyFree, date, status, primaryOwner);
-        this.monthlyMaintenanceFee = monthlyMaintenanceFee;
-        this.minimumBalance = minimumBalance;
         this.secretKey = secretKey;
     }
 }
