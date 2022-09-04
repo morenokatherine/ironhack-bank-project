@@ -1,4 +1,4 @@
-package com.bank.repositories;
+package com.bank.repositories.account;
 
 import com.bank.models.account.StudentChecking;
 import org.springframework.data.jpa.repository.JpaRepository;

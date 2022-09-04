@@ -1,4 +1,4 @@
-package com.bank.dto;
+package com.bank.dto.account;
 import com.bank.enums.Status;
 import com.bank.models.user.AccountHolder;
 import lombok.*;
@@ -12,9 +12,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class AccountDTO {
+public class CreateAccountDTO {
     private BigDecimal balance;
-    private int penaltyFree;
     private LocalDate date;
     private Status status;
     private AccountHolder primaryOwner;

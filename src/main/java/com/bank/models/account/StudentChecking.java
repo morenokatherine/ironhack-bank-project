@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -20,8 +19,8 @@ public class StudentChecking extends Account {
 
     private String secretKey;
 
-    public StudentChecking(BigDecimal balance, int penaltyFree, LocalDate date, Status status, User primaryOwner, String secretKey) {
-        super(balance, penaltyFree, date, status, primaryOwner);
+    public StudentChecking(BigDecimal balance, LocalDate date, Status status, User primaryOwner, String secretKey) {
+        super(balance, date, status, primaryOwner);
         this.secretKey = secretKey;
     }
 }

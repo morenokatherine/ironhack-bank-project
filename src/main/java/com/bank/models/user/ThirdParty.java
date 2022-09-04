@@ -1,13 +1,12 @@
 package com.bank.models.user;
 
-import com.bank.models.account.Account;
+import com.bank.enums.Role;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.Entity;
-import java.util.List;
+
 
 @Entity
 @Getter
@@ -15,8 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class ThirdParty extends User {
+    private String hashKey;
 
-    public ThirdParty(String name, List<Account> account) {
-        super(name, account);
+    public ThirdParty(String name, String hashKey) {
+        super(name, null, null, Role.ROLE_THIRD_PARTY);
+        this.hashKey = hashKey;
     }
 }

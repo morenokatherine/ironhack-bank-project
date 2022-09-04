@@ -1,4 +1,4 @@
-package com.bank.repositories;
+package com.bank.repositories.user;
 
 import com.bank.models.user.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;

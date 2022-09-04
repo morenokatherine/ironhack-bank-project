@@ -1,4 +1,4 @@
-package com.bank.dto;
+package com.bank.dto.user;
 
 import lombok.*;
 
@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class AdminDTO {
+public class CreateUserDTO {
     private String name;
+    private String password;
 }

@@ -1,7 +1,7 @@
-package com.bank.dto;
+package com.bank.dto.account;
 
 import com.bank.enums.Status;
-import com.bank.models.user.AccountHolder;
+import com.bank.models.user.User;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,14 +11,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class SavingsDTO {
+public class CreateCreditCardDTO {
+
     private BigDecimal balance;
     private int penaltyFree;
     private LocalDate date;
     private Status status;
-    private AccountHolder primaryOwner;
+    private User primaryOwner;
     private BigDecimal interestRate;
-    private String secretKey;
-
-
+    private BigDecimal creditLimit;
 }

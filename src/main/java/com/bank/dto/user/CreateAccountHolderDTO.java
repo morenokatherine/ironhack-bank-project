@@ -1,4 +1,4 @@
-package com.bank.dto;
+package com.bank.dto.user;
 
 import com.bank.models.utils.Address;
 import lombok.*;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class AccountHolderDTO {
+public class CreateAccountHolderDTO {
     private String name;
     @Embedded
     private Address address;

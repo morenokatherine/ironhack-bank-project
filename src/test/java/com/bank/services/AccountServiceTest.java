@@ -6,9 +6,9 @@ import com.bank.models.utils.Address;
 import com.bank.models.account.Account;
 import com.bank.models.account.Checking;
 import com.bank.models.user.AccountHolder;
-import com.bank.repositories.AccountHolderRepository;
-import com.bank.repositories.AdminRepository;
-import com.bank.repositories.CheckingRepository;
+import com.bank.repositories.user.AccountHolderRepository;
+import com.bank.repositories.user.AdminRepository;
+import com.bank.repositories.account.CheckingRepository;
 import com.bank.services.account.AccountService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,9 +41,9 @@ public class AccountServiceTest {
 
         List<Account> accounts = new ArrayList<>();
         Address address = new Address("Calle","Barcelona");
-        AccountHolder accountHolder1 = new AccountHolder("pepe",accounts,address,"1234",LocalDate.now());
+        AccountHolder accountHolder1 = new AccountHolder("pepe","1234",address,LocalDate.now());
         accountHolderRepository.save(accountHolder1);
-        Checking checking = new Checking(new BigDecimal(50).setScale(2), 10,LocalDate.now(),Status.ACTIVE,accountHolder1,"123");
+        Checking checking = new Checking(new BigDecimal(50).setScale(2),LocalDate.now(),Status.ACTIVE,accountHolder1,"123");
         checkingRepository.save(checking);
         List<Account> result = null;
         try {
@@ -55,45 +55,23 @@ public class AccountServiceTest {
 
         assertEquals(1, result.size());
         assertTrue(checking.equals(result.get(0)));
-        assertThrows(Exception.class, () -> {accountService.getAccountsByUserId(2);}
+        assertThrows(Exception.class, () -> {accountService.getAccountsByUserId(2000);}
         );
     }
 
-    @Test
-    @DisplayName("Test a getAccountsByAccountHolderId")
-    public void getAccountsByAccountHolderId_Test(){
 
+
+    @Test
+    @DisplayName("Test that getAccountsByAccountHolder method exception works")
+    public void getAccountsByAccountHolderId2_Test(){
         List<Account> accounts = new ArrayList<>();
         Address address = new Address("Calle","Barcelona");
-        AccountHolder accountHolder1 = new AccountHolder("pepe",accounts,address,"1234",LocalDate.now());
-        accountHolderRepository.save(accountHolder1);
-        Checking checking = new Checking(new BigDecimal(50).setScale(2), 10,LocalDate.now(),Status.ACTIVE,accountHolder1,"123");
-        checkingRepository.save(checking);
-        List<Account> result = null;
-        try {
-            result = accountService.getAccountsByAccountHolderId(accountHolder1.getId());
-            System.out.println(result);
-        }catch (Exception e){
-            System.err.println(e);
-        }
-
-        assertEquals(1, result.size());
-        assertTrue(checking.equals(result.get(0)));
-        assertThrows(Exception.class, () -> {accountService.getAccountsByAccountHolderId(2);}
-        );
-    }
-
-
-    @Test
-    @DisplayName("Test that getAccountsByAccountHolderId method exception works")
-    public void getAccountsByAccountHolderId2_Test(){
-
-        List<Account> accounts = new ArrayList<>();
-        Admin admin = new Admin("pepe", accounts);
+        AccountHolder accountHolder1 = new AccountHolder("pepe","1234",address,LocalDate.now());
+        Admin admin = new Admin("pepe", "123");
         adminRepository.save(admin);
-        Checking checking = new Checking(new BigDecimal(50).setScale(2), 10,LocalDate.now(),Status.ACTIVE,admin,"123");
+        Checking checking = new Checking(new BigDecimal(50).setScale(2),LocalDate.now(),Status.ACTIVE,admin,"123");
         checkingRepository.save(checking);
-        assertThrows(Exception.class, () -> {accountService.getAccountsByAccountHolderId(admin.getId());}
+        assertThrows(Exception.class, () -> {accountService.getAccountsByAccountHolder(accountHolder1);}
         );
     }
 

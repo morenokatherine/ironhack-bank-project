@@ -1,8 +1,8 @@
 package com.bank.services.account;
 
-import com.bank.dto.AccountDTO;
+import com.bank.dto.account.CreateAccountDTO;
 import com.bank.models.account.StudentChecking;
-import com.bank.repositories.StudentCheckingRepository;
+import com.bank.repositories.account.StudentCheckingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,13 @@ public class StudentCheckingService {
 
     StudentCheckingRepository studentCheckingRepository;
 
-    public StudentChecking createStudentChecking(AccountDTO studentCheckingAccountDTO){
+    public StudentChecking createStudentChecking(CreateAccountDTO studentCheckingCreateAccountDTO){
         StudentChecking studentChecking = new StudentChecking();
-        studentChecking.setBalance(studentCheckingAccountDTO.getBalance());
-        studentChecking.setPenaltyFree(studentCheckingAccountDTO.getPenaltyFree());
-        studentChecking.setDate(studentCheckingAccountDTO.getDate());
-        studentChecking.setStatus(studentCheckingAccountDTO.getStatus());
-        studentChecking.setPrimaryOwner(studentCheckingAccountDTO.getPrimaryOwner());
-        studentChecking.setSecretKey(studentCheckingAccountDTO.getSecretKey());
+        studentChecking.setBalance(studentCheckingCreateAccountDTO.getBalance());
+        studentChecking.setDate(studentCheckingCreateAccountDTO.getDate());
+        studentChecking.setStatus(studentCheckingCreateAccountDTO.getStatus());
+        studentChecking.setPrimaryOwner(studentCheckingCreateAccountDTO.getPrimaryOwner());
+        studentChecking.setSecretKey(studentCheckingCreateAccountDTO.getSecretKey());
         return studentCheckingRepository.save(studentChecking);
     }
 }
